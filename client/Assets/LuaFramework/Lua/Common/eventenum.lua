@@ -1,0 +1,37 @@
+--公共监听类--
+
+EVENT_UI = 
+{
+	--模型点击事件类型
+	EVENT_UI_PREFAB_TOUCH_TYPE = "EVENT_UI_PREFAB_TOUCH_TYPE", --点击类型 ， 点击数据
+
+
+
+	--活动
+
+
+	--perfab倒计时
+	EVENT_UI_PREFAB_LEFTTIME_STATE = "EVENT_UI_PREFAB_LEFTTIME_STATE",--界面 或者 模型 等perfab倒计时回调
+
+
+
+	--关闭loading界面
+	EVENT_UI_CLOSE_LOADING = "EVENT_UI_CLOSE_LOADING",
+	--再来一局打地鼠
+	EVENT_UI_DISHU_AGIN = "EVENT_UI_DISHU_AGIN",
+	--地鼠结算
+	EVENT_UI_DISHU_OVER = "EVENT_UI_DISHU_OVER",
+}
+
+
+EVENT_SERVER = 
+{
+	--登录
+	EVENT_SERVER_LOGIN_ENTER = "EVENT_SERVER_LOGIN_ENTER", --测试
+
+
+
+
+	--活动
+
+}

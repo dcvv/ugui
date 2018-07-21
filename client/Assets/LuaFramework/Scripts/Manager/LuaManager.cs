@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using LuaInterface;
-
+using System;
 namespace LuaFramework {
     public class LuaManager : Manager {
         private LuaState lua;
@@ -62,6 +62,11 @@ namespace LuaFramework {
             lua.OpenLibs(LuaDLL.luaopen_lpeg);
             lua.OpenLibs(LuaDLL.luaopen_bit);
             lua.OpenLibs(LuaDLL.luaopen_socket_core);
+
+            //luaide socket 开启
+            this.OpenLuaSocket();
+            //end luaide  
+
 
             this.OpenCJson();
         }
@@ -129,5 +134,21 @@ namespace LuaFramework {
             lua = null;
             loader = null;
         }
+        #region luaide 调试库添加
+        //如果项目中没有luasocket 请打开
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int LuaOpen_Socket_Core(IntPtr L)
+        {
+            return LuaDLL.luaopen_socket_core(L);
+        }
+
+        protected void OpenLuaSocket()
+        {
+            LuaConst.openLuaSocket = true;
+            lua.BeginPreLoad();
+            lua.RegFunction("socket.core", LuaOpen_Socket_Core);
+            lua.EndPreLoad();
+        }
+        #endregion
     }
 }
