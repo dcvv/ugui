@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//添加 DG
+#define USING_DOTWEENING 
+
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using LuaInterface;
@@ -8,7 +11,6 @@ using UnityEditor;
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
 using System.Reflection;
-
 public static class CustomSettings
 {
     public static string FrameworkPath = AppConst.FrameworkRoot;
@@ -81,8 +83,8 @@ public static class CustomSettings
         _GT(typeof(Rigidbody)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(Camera)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(AudioSource)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),    
+        _GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),    
 #else
                                          
         _GT(typeof(Component)),
@@ -172,7 +174,15 @@ public static class CustomSettings
         _GT(typeof(TimerManager)),
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
-        _GT(typeof(ResourceManager)),		  
+        _GT(typeof(ResourceManager)),
+        
+        //自定义其他导出
+        _GT(typeof(UnityEngine.Events.UnityEvent)),
+        _GT(typeof(Toggle.ToggleEvent)),
+        _GT(typeof(Dropdown.DropdownEvent)),
+        _GT(typeof(InputField.OnChangeEvent)),
+        _GT(typeof(Event)),
+
     };
 
     public static List<Type> dynamicList = new List<Type>()
