@@ -1,0 +1,1 @@
+xcopy /S /Y /E Assets\StreamingAssets\*.*  E:\nginx-1.13.6\html\updateres
